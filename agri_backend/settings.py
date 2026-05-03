@@ -16,8 +16,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 INSECURE_SECRET_KEY = "insecure-dev-only-secret-key-change-me"
-# Allow all hosts by default — restrict via DJANGO_ALLOWED_HOSTS env var in production.
-DEFAULT_ALLOWED_HOSTS = "*"
+# Default allowed hosts for local development.
+DEFAULT_ALLOWED_HOSTS = "localhost,127.0.0.1"
 # Local dev CORS origins. Override in production via CORS_ALLOWED_ORIGINS env var.
 DEFAULT_CORS_ORIGINS = "http://localhost:5173,http://127.0.0.1:5173"
 # CSRF trusted origins — must include the Railway backend HTTPS domain for POST to work.
@@ -110,7 +110,8 @@ def get_database_config() -> dict:
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", INSECURE_SECRET_KEY)
 DEBUG = get_bool("DJANGO_DEBUG", True)
-ALLOWED_HOSTS = get_list("DJANGO_ALLOWED_HOSTS", DEFAULT_ALLOWED_HOSTS)
+# Read from ALLOWED_HOSTS (primary) or DJANGO_ALLOWED_HOSTS (secondary)
+ALLOWED_HOSTS = get_list("ALLOWED_HOSTS", os.getenv("DJANGO_ALLOWED_HOSTS", DEFAULT_ALLOWED_HOSTS))
 
 if not DEBUG and SECRET_KEY == INSECURE_SECRET_KEY:
     raise ImproperlyConfigured("DJANGO_SECRET_KEY must be set to a secure value when DJANGO_DEBUG is False.")

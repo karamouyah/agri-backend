@@ -8,18 +8,17 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
+from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 
-class HealthView(APIView):
-    """Defines HealthView for this app and is used by the serializers, views, routes, or admin when imported."""
-    permission_classes = []
-    authentication_classes = []
+def health_check(request):
+    """Simple database-independent health check endpoint."""
+    return JsonResponse({"status": "ok"})
 
-    def get(self, request):
-        """Handles get, using the declared parameters and returning the expected value or API response."""
-        return Response({"status": "ok"})
+
+
 
 
 class ApiRootView(APIView):
@@ -48,7 +47,7 @@ class ApiRootView(APIView):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", ApiRootView.as_view(), name="api-root"),
-    path("api/health/", HealthView.as_view(), name="health"),
+    path("api/health/", health_check, name="health"),
     path("api/auth/", include("apps.users.urls")),
     path("api/products/", include("apps.catalog.admin_product_urls")),
     path("api/locations/", include("apps.locations.urls")),
