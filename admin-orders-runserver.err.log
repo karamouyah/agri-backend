@@ -1,0 +1,142 @@
+Watching for file changes with StatReloader
+[30/Apr/2026 10:10:11] "OPTIONS /api/catalog/filters/ HTTP/1.1" 200 0
+Unauthorized: /api/catalog/filters/
+[30/Apr/2026 10:10:11] "GET /api/catalog/filters/ HTTP/1.1" 401 172
+[30/Apr/2026 10:10:11] "OPTIONS /api/locations/tree/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:11] "OPTIONS /api/logistics/requests/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:11] "OPTIONS /api/logistics/active/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:11] "OPTIONS /api/logistics/requests/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:11] "OPTIONS /api/logistics/completed/ HTTP/1.1" 200 0
+Unauthorized: /api/logistics/requests/
+[30/Apr/2026 10:10:11] "OPTIONS /api/logistics/completed/ HTTP/1.1" 200 0
+Unauthorized: /api/logistics/active/
+[30/Apr/2026 10:10:11] "OPTIONS /api/logistics/declined/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:11] "OPTIONS /api/logistics/active/ HTTP/1.1" 200 0
+Unauthorized: /api/logistics/completed/
+[30/Apr/2026 10:10:11] "GET /api/logistics/requests/ HTTP/1.1" 401 172
+Unauthorized: /api/logistics/declined/
+[30/Apr/2026 10:10:11] "OPTIONS /api/logistics/declined/ HTTP/1.1" 200 0
+Unauthorized: /api/logistics/requests/
+[30/Apr/2026 10:10:11] "GET /api/logistics/active/ HTTP/1.1" 401 172
+[30/Apr/2026 10:10:11] "GET /api/logistics/completed/ HTTP/1.1" 401 172
+Unauthorized: /api/logistics/active/
+[30/Apr/2026 10:10:11] "GET /api/logistics/declined/ HTTP/1.1" 401 172
+Unauthorized: /api/logistics/completed/
+[30/Apr/2026 10:10:11] "GET /api/logistics/requests/ HTTP/1.1" 401 172
+Unauthorized: /api/logistics/declined/
+[30/Apr/2026 10:10:11] "GET /api/logistics/active/ HTTP/1.1" 401 172
+[30/Apr/2026 10:10:11] "GET /api/logistics/completed/ HTTP/1.1" 401 172
+[30/Apr/2026 10:10:11] "GET /api/logistics/declined/ HTTP/1.1" 401 172
+[30/Apr/2026 10:10:11] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 10:10:12] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 10:10:47] "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:48] "POST /api/auth/login/ HTTP/1.1" 200 1059
+[30/Apr/2026 10:10:48] "OPTIONS /api/auth/admin/stats/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:48] "OPTIONS /api/auth/admin/stats/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:48] "GET /api/auth/admin/stats/ HTTP/1.1" 200 718
+[30/Apr/2026 10:10:48] "GET /api/auth/admin/stats/ HTTP/1.1" 200 718
+[30/Apr/2026 10:10:57] "OPTIONS /api/orders/admin/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:57] "OPTIONS /api/orders/admin/ HTTP/1.1" 200 0
+[30/Apr/2026 10:10:58] "GET /api/catalog/filters/ HTTP/1.1" 200 73557
+[30/Apr/2026 10:10:58] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 10:10:58] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 10:11:08] "GET /api/orders/admin/ HTTP/1.1" 200 57054
+[30/Apr/2026 10:11:17] "GET /api/orders/admin/ HTTP/1.1" 200 57054
+[30/Apr/2026 10:12:05] "OPTIONS /api/auth/admin/users/pending/ HTTP/1.1" 200 0
+[30/Apr/2026 10:12:05] "OPTIONS /api/auth/admin/users/?approval_status=pending HTTP/1.1" 200 0
+[30/Apr/2026 10:12:05] "OPTIONS /api/auth/admin/users/pending/ HTTP/1.1" 200 0
+[30/Apr/2026 10:12:05] "OPTIONS /api/auth/admin/users/?approval_status=pending HTTP/1.1" 200 0
+[30/Apr/2026 10:12:06,469] - Broken pipe from ('127.0.0.1', 61782)
+[30/Apr/2026 10:12:06,658] - Broken pipe from ('127.0.0.1', 52749)
+[30/Apr/2026 10:12:06] "GET /api/auth/admin/stats/ HTTP/1.1" 200 718
+[30/Apr/2026 10:12:06] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 10:12:06] "GET /api/catalog/filters/ HTTP/1.1" 200 73557
+[30/Apr/2026 10:12:07] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 10:12:07] "GET /api/auth/admin/stats/ HTTP/1.1" 200 718
+[30/Apr/2026 10:12:07,891] - Broken pipe from ('127.0.0.1', 60777)
+[30/Apr/2026 10:12:07,990] - Broken pipe from ('127.0.0.1', 50614)
+[30/Apr/2026 10:15:59] "GET /api/orders/admin/ HTTP/1.1" 200 57054
+[30/Apr/2026 10:16:09] "GET /api/orders/admin/ HTTP/1.1" 200 57054
+[30/Apr/2026 10:16:26] "GET /api/auth/admin/stats/ HTTP/1.1" 200 718
+[30/Apr/2026 10:16:26] "GET /api/auth/admin/stats/ HTTP/1.1" 200 718
+[30/Apr/2026 10:16:35] "OPTIONS /api/catalog/categories/ HTTP/1.1" 200 0
+[30/Apr/2026 10:16:35] "OPTIONS /api/products/ HTTP/1.1" 200 0
+[30/Apr/2026 10:16:35] "OPTIONS /api/catalog/categories/ HTTP/1.1" 200 0
+[30/Apr/2026 10:16:35] "OPTIONS /api/products/ HTTP/1.1" 200 0
+[30/Apr/2026 10:16:35] "GET /api/catalog/categories/ HTTP/1.1" 200 141
+[30/Apr/2026 10:16:35] "GET /api/catalog/categories/ HTTP/1.1" 200 141
+[30/Apr/2026 10:16:35] "GET /api/products/ HTTP/1.1" 200 963375
+[30/Apr/2026 10:16:36] "GET /api/products/ HTTP/1.1" 200 963375
+[30/Apr/2026 10:16:45] "GET /api/orders/admin/ HTTP/1.1" 200 57054
+[30/Apr/2026 10:16:54] "GET /api/orders/admin/ HTTP/1.1" 200 57054
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\agri_backend\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\reports\migrations\0001_initial.py changed, reloading.
+Watching for file changes with StatReloader
+[30/Apr/2026 14:59:06] "OPTIONS /api/catalog/filters/ HTTP/1.1" 200 0
+Unauthorized: /api/catalog/filters/
+[30/Apr/2026 14:59:06] "GET /api/catalog/filters/ HTTP/1.1" 401 172
+[30/Apr/2026 14:59:06] "OPTIONS /api/orders/admin/ HTTP/1.1" 200 0
+[30/Apr/2026 14:59:06] "OPTIONS /api/locations/tree/ HTTP/1.1" 200 0
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 14:59:06] "OPTIONS /api/orders/admin/ HTTP/1.1" 200 0
+[30/Apr/2026 14:59:06] "OPTIONS /api/locations/tree/ HTTP/1.1" 200 0
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 14:59:06] "GET /api/orders/admin/ HTTP/1.1" 401 172
+[30/Apr/2026 14:59:06] "GET /api/orders/admin/ HTTP/1.1" 401 172
+[30/Apr/2026 14:59:07] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 14:59:08] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\reports\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/catalog/filters/
+[30/Apr/2026 15:00:57] "GET /api/catalog/filters/ HTTP/1.1" 401 172
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 15:00:57] "GET /api/orders/admin/ HTTP/1.1" 401 172
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 15:00:57] "GET /api/orders/admin/ HTTP/1.1" 401 172
+[30/Apr/2026 15:00:58] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 15:00:58] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\reports\models.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/catalog/filters/
+[30/Apr/2026 15:05:31] "GET /api/catalog/filters/ HTTP/1.1" 401 172
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 15:05:31] "GET /api/orders/admin/ HTTP/1.1" 401 172
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 15:05:31] "GET /api/orders/admin/ HTTP/1.1" 401 172
+[30/Apr/2026 15:05:32] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 15:05:33] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+Unauthorized: /api/catalog/filters/
+[30/Apr/2026 15:05:49] "GET /api/catalog/filters/ HTTP/1.1" 401 172
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 15:05:49] "GET /api/orders/admin/ HTTP/1.1" 401 172
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 15:05:49] "GET /api/orders/admin/ HTTP/1.1" 401 172
+[30/Apr/2026 15:05:49] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\reports\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+[30/Apr/2026 15:05:51] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\reports\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /api/catalog/filters/
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 15:06:02] "GET /api/catalog/filters/ HTTP/1.1" 401 172
+[30/Apr/2026 15:06:02] "GET /api/orders/admin/ HTTP/1.1" 401 172
+Unauthorized: /api/orders/admin/
+[30/Apr/2026 15:06:02] "GET /api/orders/admin/ HTTP/1.1" 401 172
+[30/Apr/2026 15:06:03] "GET /api/locations/tree/ HTTP/1.1" 200 68827
+[30/Apr/2026 16:46:19,482] - Broken pipe from ('127.0.0.1', 51531)
+[30/Apr/2026 16:46:19,696] - Broken pipe from ('127.0.0.1', 49767)
+[30/Apr/2026 16:46:19,461] - Broken pipe from ('127.0.0.1', 49372)
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\agri_backend\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\agri_backend\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\documents\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\users\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\kk807\Desktop\agriculture project\agri-app\backend\apps\users\serializers.py changed, reloading.
+Watching for file changes with StatReloader
