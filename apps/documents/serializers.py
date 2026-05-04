@@ -21,6 +21,7 @@ def user_summary(user):
 class VerificationDocumentSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
     file_url = serializers.SerializerMethodField()
+    pdf_url = serializers.SerializerMethodField()
     file_name = serializers.SerializerMethodField()
 
     class Meta:
@@ -31,6 +32,7 @@ class VerificationDocumentSerializer(serializers.ModelSerializer):
             "role",
             "document_type",
             "file_url",
+            "pdf_url",
             "file_name",
             "status",
             "admin_notes",
@@ -45,7 +47,20 @@ class VerificationDocumentSerializer(serializers.ModelSerializer):
         if not obj.file:
             return ""
         request = self.context.get("request")
-        url = obj.file.url
+        url = f"/api/documents/{obj.id}/download/"
+        if not request:
+            return url
+        try:
+            return request.build_absolute_uri(url)
+        except DisallowedHost:
+            return url
+
+    def get_pdf_url(self, obj):
+        """Return URL to the converted PDF file if available."""
+        if not obj.pdf_file:
+            return ""
+        request = self.context.get("request")
+        url = f"/api/documents/{obj.id}/download-pdf/"
         if not request:
             return url
         try:

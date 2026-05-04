@@ -14,6 +14,19 @@ from apps.catalog.models import ProductList
 from apps.locations.models import Commune, Wilaya
 from apps.logistics.models import Shipment
 from apps.orders.models import Order, OrderItem, Payment
+from apps.users.models import User
+
+class UserContactSerializer(serializers.ModelSerializer):
+    """Serializer for nested user contact info (full_name, email, phone)."""
+    full_name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ["full_name", "email", "phone_number"]
+
+    def get_full_name(self, obj):
+        return f"{obj.first_name} {obj.last_name}".strip()
+
 
 
 ORDER_STATUS_SLUGS = {
@@ -113,6 +126,9 @@ class OrderSerializer(serializers.ModelSerializer):
     pickup_wilaya_name = serializers.CharField(source="pickup_wilaya.name", read_only=True)
     pickup_commune_id = serializers.IntegerField(read_only=True)
     pickup_commune_name = serializers.CharField(source="pickup_commune.name", read_only=True)
+    buyer_contact = serializers.SerializerMethodField()
+    transporter_contact = serializers.SerializerMethodField()
+    farmer_contact = serializers.SerializerMethodField()
 
     class Meta:
         """Defines Meta for this app and is used by the serializers, views, routes, or admin when imported."""
@@ -135,7 +151,48 @@ class OrderSerializer(serializers.ModelSerializer):
             "pickup_wilaya_name",
             "pickup_commune_id",
             "pickup_commune_name",
+            "buyer_contact",
+            "transporter_contact",
+            "farmer_contact",
         ]
+
+    def _get_contact_data(self, user_instance, obj):
+        if not user_instance:
+            return None
+        request = self.context.get("request")
+        if not request:
+            return None
+
+        current_user = request.user
+        if not current_user or not current_user.is_authenticated:
+            return None
+
+        is_accepted = obj.status >= Order.Status.ACCEPTED
+
+        is_buyer = hasattr(current_user, 'buyer') and current_user.buyer == obj.buyer
+        is_farmer = hasattr(current_user, 'farmer') and current_user.farmer == obj.farmer
+        
+        shipment = obj.shipments.order_by("id").first()
+        transporter = shipment.transporter if shipment else None
+        is_transporter = hasattr(current_user, 'transporter') and transporter and current_user.transporter == transporter
+
+        is_involved = is_buyer or is_farmer or is_transporter
+
+        if is_accepted or is_involved:
+            return UserContactSerializer(user_instance).data
+        return None
+
+    def get_buyer_contact(self, obj):
+        return self._get_contact_data(obj.buyer.person, obj)
+
+    def get_farmer_contact(self, obj):
+        return self._get_contact_data(obj.farmer.person, obj)
+
+    def get_transporter_contact(self, obj):
+        shipment = obj.shipments.order_by("id").first()
+        if shipment and shipment.transporter:
+            return self._get_contact_data(shipment.transporter.person, obj)
+        return None
 
     def get_address(self, obj):
         """Handles get_address, using the declared parameters and returning the expected value or API response."""

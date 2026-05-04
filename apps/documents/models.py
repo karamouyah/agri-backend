@@ -45,6 +45,7 @@ class VerificationDocument(models.Model):
     role = models.CharField(max_length=20, choices=Role.choices)
     document_type = models.CharField(max_length=30, choices=DocumentType.choices)
     file = models.FileField(upload_to="verification_documents/%Y/%m/", validators=[validate_verification_file])
+    pdf_file = models.FileField(upload_to="verification_documents_pdf/%Y/%m/", blank=True, null=True, help_text="Auto-generated PDF version of the document")
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING, db_index=True)
     admin_notes = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)

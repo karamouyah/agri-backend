@@ -7,7 +7,7 @@ Connects to the Django backend through imports, app configuration, API routing, 
 from rest_framework import serializers
 
 from apps.logistics.models import Shipment
-from apps.orders.serializers import ORDER_STATUS_SLUGS
+from apps.orders.serializers import ORDER_STATUS_SLUGS, UserContactSerializer
 
 
 SHIPMENT_STATUS_SLUGS = {
@@ -39,8 +39,8 @@ class MissionSerializer(serializers.ModelSerializer):
     completed_at = serializers.SerializerMethodField(read_only=True)
     buyer_name = serializers.SerializerMethodField(read_only=True)
     farmer_name = serializers.SerializerMethodField(read_only=True)
-    buyer_contact = serializers.CharField(source="order.buyer.person.phone_number", read_only=True)
-    farmer_contact = serializers.CharField(source="order.farmer.person.phone_number", read_only=True)
+    buyer_contact = serializers.SerializerMethodField(read_only=True)
+    farmer_contact = serializers.SerializerMethodField(read_only=True)
     status = serializers.SerializerMethodField(read_only=True)
     order_status = serializers.SerializerMethodField(read_only=True)
     payment_method = serializers.SerializerMethodField(read_only=True)
@@ -141,6 +141,28 @@ class MissionSerializer(serializers.ModelSerializer):
         """Returns the stored payment method when the checkout payment exists."""
         payment = obj.order.payments.order_by("id").first()
         return payment.payment_method if payment else ""
+
+    def _get_contact_data(self, user_instance, obj):
+        if not user_instance:
+            return None
+        request = self.context.get("request")
+        if not request:
+            return None
+        current_user = request.user
+        if not current_user or not current_user.is_authenticated:
+            return None
+            
+        is_assigned = hasattr(current_user, 'transporter') and obj.transporter == current_user.transporter
+        # Transporters see it if they accepted/are assigned to the shipment
+        if is_assigned or obj.status >= Shipment.Status.ACCEPTED:
+            return UserContactSerializer(user_instance).data
+        return None
+
+    def get_buyer_contact(self, obj):
+        return self._get_contact_data(obj.order.buyer.person, obj)
+
+    def get_farmer_contact(self, obj):
+        return self._get_contact_data(obj.order.farmer.person, obj)
 
     def get_buyer_name(self, obj):
         """Returns the buyer display name from the linked user account."""
